@@ -1,0 +1,20 @@
+{
+      "namespace": "com.telenav.serialize",
+      "name": "adLogRecord",
+      "type": "record",
+      "fields": [
+             { "name" : "internalRequestId", "type": "long"},
+             { "name" : "internalRequestToVendorId", "type": "long"},
+             { "name" : "internalAdId", "type" : "long"},
+             { "name" : "vendorCode", "type" : ["null", "string"]},
+             { "name" : "vendorAdId", "type" : "long"},
+             { "name" : "buisenessName", "type" : ["null", "string"]},
+             { "name" : "lat", "type" : "double"},
+             { "name" : "lon", "type" : "double"},
+             { "name" : "city", "type" : ["null", "string"]}, 
+             { "name" : "state", "type" : ["null", "string"]}, 
+             { "name" : "country", "type" : ["null", "string"]}, 
+             { "name" : "postalCode", "type" : ["null", "string"]}, 
+             { "name" : "street", "type" : ["null", "string"] },
+             { "name" : "poiId", "type" : "long"} ]
+}
