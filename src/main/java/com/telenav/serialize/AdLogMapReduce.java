@@ -67,7 +67,6 @@ public class AdLogMapReduce extends Configured implements Tool {
 
 		JobClient.runJob(conf);
 		return 1;
-		//return job.waitForCompletion(true) ? 0 : 1;
 	}
 
 	public static class AvroRecordMapper extends

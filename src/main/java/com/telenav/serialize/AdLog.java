@@ -159,7 +159,6 @@ public class AdLog extends AvroInputFormat<AdLog>{
 	public static AdLog create(String line) throws JsonParseException, JsonMappingException, IOException {
 		
 		String json = line.substring(line.indexOf("{"));
-		System.out.println(json);
 		JsonNode node = mapper.readValue(json, JsonNode.class);
 		AdLog obj = new AdLog();
 		obj.setInternalRequestId(node.get("internalRequestId").asLong());
@@ -177,6 +176,7 @@ public class AdLog extends AvroInputFormat<AdLog>{
 		obj.setPoiId(node.get("poiId").asLong());
 		return obj;
 	}
+	
 	
 	public void serialize() throws IOException {
 		GenericRecord datum = createAvroDatum(schema);
@@ -200,5 +200,10 @@ public class AdLog extends AvroInputFormat<AdLog>{
 		datum.put("street", getStreet());
 		datum.put("poiId", getPoiId());
 		return datum;
+	}
+
+	public static JsonNode createJson(String line) throws JsonParseException, JsonMappingException, IOException {
+		String json = line.substring(line.indexOf("{"));
+		return mapper.readValue(json, JsonNode.class);
 	}
 }
