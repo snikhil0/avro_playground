@@ -3,8 +3,10 @@ package com.telenav.serialize.json;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
+import java.util.Iterator;
 
 import org.apache.hadoop.io.Writable;
+import org.codehaus.jackson.JsonNode;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -23,6 +25,16 @@ public class JSONObjectWritable extends JSONObject implements Writable {
 	 */
 	public JSONObjectWritable(String s) throws JSONException {
 		super(s);
+	}
+
+	public JSONObjectWritable(JSONObject log) throws JSONException {
+		Iterator keys = log.keys();
+		while(keys.hasNext()) {
+			Object key = keys.next();
+			Object value = log.get((String)key);
+			put((String)key, value);
+		}
+			
 	}
 
 	/**

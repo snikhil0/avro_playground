@@ -12,6 +12,8 @@ import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.JsonParser.Feature;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class AdLog extends AvroInputFormat<AdLog>{
 	
@@ -147,6 +149,7 @@ public class AdLog extends AvroInputFormat<AdLog>{
 	private String postalCode;
 	private String street;
 	private long poiId;
+	private int failed = 0;
 	
 	private DataFileWriter<GenericRecord> dataFileWriter;
 	private Schema schema;
@@ -159,8 +162,9 @@ public class AdLog extends AvroInputFormat<AdLog>{
 	public static AdLog create(String line) throws JsonParseException, JsonMappingException, IOException {
 		
 		String json = line.substring(line.indexOf("{"));
-		JsonNode node = mapper.readValue(json, JsonNode.class);
 		AdLog obj = new AdLog();
+		try {
+		JsonNode node = mapper.readValue(json, JsonNode.class);
 		obj.setInternalRequestId(node.get("internalRequestId").asLong());
 		obj.setInternalRequestToVendorId(node.get("internalRequestToVendorId").asLong());
 		obj.setInternalAdId(node.get("internalAdId").asLong());
@@ -171,9 +175,13 @@ public class AdLog extends AvroInputFormat<AdLog>{
 		obj.setLat(node.get("lon").asDouble());
 		obj.setCity(node.get("city").asText());
 		obj.setCountry(node.get("country").asText());
-		obj.setCountry(node.get("postalCode").asText());
-		obj.setCountry(node.get("street").asText());
+		obj.setPostalCode(node.get("postalCode").asText());
+		obj.setStreet(node.get("street").asText());
 		obj.setPoiId(node.get("poiId").asLong());
+		obj.setFailed(0);
+		} catch (Exception e) {
+			return null;
+		}
 		return obj;
 	}
 	
@@ -181,7 +189,7 @@ public class AdLog extends AvroInputFormat<AdLog>{
 	public void serialize() throws IOException {
 		GenericRecord datum = createAvroDatum(schema);
 		dataFileWriter.append(datum);
-		dataFileWriter.flush();
+		//dataFileWriter.flush();
 	}
 	
 	public GenericRecord createAvroDatum(Schema schema) {
@@ -202,8 +210,16 @@ public class AdLog extends AvroInputFormat<AdLog>{
 		return datum;
 	}
 
-	public static JsonNode createJson(String line) throws JsonParseException, JsonMappingException, IOException {
+	public static JSONObject createJson(String line) throws JSONException  {
 		String json = line.substring(line.indexOf("{"));
-		return mapper.readValue(json, JsonNode.class);
+		return new JSONObject(json);
+	}
+
+	public int getFailed() {
+		return failed;
+	}
+
+	public void setFailed(int failed) {
+		this.failed = failed;
 	}
 }

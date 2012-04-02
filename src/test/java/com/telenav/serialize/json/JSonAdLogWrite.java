@@ -3,22 +3,18 @@
  */
 package com.telenav.serialize.json;
 
-import static org.junit.Assert.*;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
+import java.io.File;
+import java.io.FileFilter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.net.URI;
+import java.util.Random;
 
-import org.apache.avro.file.DataFileWriter;
-import org.apache.avro.generic.GenericRecord;
-import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.hdfs.DistributedFileSystem;
-import org.codehaus.jackson.JsonNode;
+import org.apache.hadoop.fs.FileSystem;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -31,15 +27,17 @@ import com.telenav.serialize.AdLog;
 public class JSonAdLogWrite {
 
 	private final String ADLOG_LOCATION = "hdfs://hqd-cassandra-01.mypna.com/user/snikhil/input/log.json";
-	private DistributedFileSystem dfs;
+	private FileSystem dfs;
 	private BufferedWriter writer;
+	private final long MAX_RECORDS = 100000000L;
 	@Before
 	public void initialize() {
 		try {
-			dfs = new DistributedFileSystem();
-			Configuration conf = new Configuration();
-			dfs.initialize(URI.create(ADLOG_LOCATION), conf );
-			writer = new BufferedWriter(new OutputStreamWriter(dfs.create(new Path(ADLOG_LOCATION), true)));
+			//dfs = new DistributedFileSystem();
+			//Configuration conf = new Configuration();
+			//dfs.initialize(URI.create(ADLOG_LOCATION), conf );
+			File fs = new File("resources/log.json");
+			writer = new BufferedWriter(new FileWriter(fs));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -47,18 +45,43 @@ public class JSonAdLogWrite {
 	}
 	
 	@Test
-	public void test() throws IOException {
-		BufferedReader rdr = new BufferedReader(new 
-				FileReader("/Users/snikhil/data/logs/citysearch-response.log.2011-12-01"));
-		
-		String line = rdr.readLine();
-		while(line != null) {
-			JsonNode log = AdLog.createJson(line);
-			writer.append(log.toString());
-			line = rdr.readLine();
-		}
-		
-		writer.close();
-	}
+	public void test() throws IOException, JSONException {
+		File directory = new File("/Users/snikhil/data/logs/");
+		File[] files = directory.listFiles(new FileFilter() {
 
+			public boolean accept(File pathname) {
+				if (pathname.getName().startsWith("citysearch")) {
+					return true;
+				}
+				return false;
+			}
+		});
+
+		System.out.println(files.length);
+		long count = 0;
+		Random fileNum = new Random();
+		while (count < MAX_RECORDS) {
+			int n = fileNum.nextInt(6);
+			BufferedReader rdr = new BufferedReader(new FileReader(files[n]));
+
+			String line = rdr.readLine();
+
+			while (line != null) {
+				JSONObject log = AdLog.createJson(line);
+				if (log != null) {
+					JSONObjectWritable obj = new JSONObjectWritable(log);
+					obj.write(writer);
+					writer.newLine();
+					count++;
+				}
+				line = rdr.readLine();
+			}
+			rdr.close();
+		}
+
+		writer.flush();
+		System.out.println(count);
+		writer.close();
+
+	}
 }
