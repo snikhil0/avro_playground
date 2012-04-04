@@ -1,0 +1,30 @@
+<ivy-module version="2.0">
+    <info organisation="telenav" module="tn-traffic-kernel"/>
+	<configurations>
+		<conf name="master"/>
+	</configurations>
+	<publications>
+		<artifact name="tn-traffic-kernel" ext="jar"/>
+	</publications>
+    <dependencies>
+        <dependency org="joda-time" name="joda-time" rev="1.6.2"/>
+        <dependency org="junit" name="junit" rev="4.8.1"/>
+		<dependency org="telenav" name="tn-kernel" rev="1.0-s17277b58"/>		
+		<dependency org="telenav" name="tn-traffic-data-proxy" rev="1.9.5.74"/>		
+		<dependency org="org.apache.httpcomponents" name="httpclient" rev="4.1.1"/>	
+		<dependency org="commons-net" name="commons-net" rev="3.0.1"/>	
+		<dependency org="javax.activation" name="activation" rev="1.1.1"/>
+		<dependency org="javax.mail" name="mail" rev="1.4"/> 
+		<dependency org="log4j" name="log4j" rev="1.2.8"/>
+		<dependency org="mysql" name="mysql-connector-java" rev="5.1.15-bin"/>
+		<dependency org="org.apache.tomcat" name="catalina" rev="6.0.29" conf="*->default,sources"/>
+		<dependency org="net/spy" name="memcached" rev="2.4.2"/>
+		<dependency org="org.codehaus.groovy" name="groovy-all" rev="1.8.1"/>
+		<dependency org="telenav" name="mapproxy-common" rev="1.0.0.31"/>
+		<dependency org="org.apache.wicket" name="wicket" rev="1.4.17"/>
+		<dependency org="org.apache.wicket" name="wicket-extensions" rev="1.4.17"/>
+		<dependency org="jfree" name="jfreechart" rev="1.0.9"/>
+		<dependency org="org.slf4j" name="slf4j-jdk14" rev="1.6.1"/>
+		<dependency org="telenav" name="livestats-client" rev="2.0.0.1"/>
+    </dependencies>
+</ivy-module>

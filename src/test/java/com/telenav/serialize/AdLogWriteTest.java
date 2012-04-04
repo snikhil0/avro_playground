@@ -42,7 +42,7 @@ public class AdLogWriteTest {
 			// dfs = new DistributedFileSystem();
 			// dfs.initialize(URI.create(ADLOG_LOCATION), conf);
 
-			File fs = new File("resources/log_deflate.avro");
+			File fs = new File("/Users/snikhil/data/log_store/log_deflate.avro");
 			DatumWriter<GenericRecord> writer = new GenericDatumWriter<GenericRecord>(
 					schema);
 			dataFileWriter = new DataFileWriter<GenericRecord>(writer);

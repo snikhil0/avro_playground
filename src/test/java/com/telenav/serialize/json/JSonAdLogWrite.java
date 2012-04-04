@@ -19,6 +19,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.telenav.serialize.AdLog;
+import com.twitter.elephantbird.mapreduce.input.LzoJsonInputFormat;
+import com.twitter.elephantbird.pig.load.LzoJsonLoader;
 
 /**
  * @author snikhil
@@ -36,7 +38,7 @@ public class JSonAdLogWrite {
 			//dfs = new DistributedFileSystem();
 			//Configuration conf = new Configuration();
 			//dfs.initialize(URI.create(ADLOG_LOCATION), conf );
-			File fs = new File("resources/log.json");
+			File fs = new File("/Users/snikhil/data/log_store/log.json");
 			writer = new BufferedWriter(new FileWriter(fs));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -68,6 +70,7 @@ public class JSonAdLogWrite {
 
 			while (line != null) {
 				JSONObject log = AdLog.createJson(line);
+				
 				if (log != null) {
 					JSONObjectWritable obj = new JSONObjectWritable(log);
 					obj.write(writer);

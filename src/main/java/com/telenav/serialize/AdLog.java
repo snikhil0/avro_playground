@@ -7,11 +7,6 @@ import org.apache.avro.file.DataFileWriter;
 import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.avro.mapred.AvroInputFormat;
-import org.codehaus.jackson.JsonNode;
-import org.codehaus.jackson.JsonParseException;
-import org.codehaus.jackson.JsonParser.Feature;
-import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -129,12 +124,6 @@ public class AdLog extends AvroInputFormat<AdLog>{
 		this.poiId = poiId;
 	}
 	
-	public static ObjectMapper mapper = new ObjectMapper();
-	
-	public static void initializeMapper() {
-		mapper.configure(Feature.ALLOW_SINGLE_QUOTES, true);
-	}
-	
 	private long internalRequestId;
 	private long internalRequestToVendorId;
 	private long internalAdId;
@@ -159,25 +148,25 @@ public class AdLog extends AvroInputFormat<AdLog>{
 		this.dataFileWriter = dataFileWriter;
 	}
 	
-	public static AdLog create(String line) throws JsonParseException, JsonMappingException, IOException {
+	public static AdLog create(String line) throws IOException {
 		
 		String json = line.substring(line.indexOf("{"));
 		AdLog obj = new AdLog();
 		try {
-		JsonNode node = mapper.readValue(json, JsonNode.class);
-		obj.setInternalRequestId(node.get("internalRequestId").asLong());
-		obj.setInternalRequestToVendorId(node.get("internalRequestToVendorId").asLong());
-		obj.setInternalAdId(node.get("internalAdId").asLong());
-		obj.setVendorCode(node.get("vendorCode").asText());
-		obj.setVendorAdId(node.get("vendorAdId").asLong());
-		obj.setBuisenessName(node.get("businessName").asText());
-		obj.setLat(node.get("lat").asDouble());
-		obj.setLat(node.get("lon").asDouble());
-		obj.setCity(node.get("city").asText());
-		obj.setCountry(node.get("country").asText());
-		obj.setPostalCode(node.get("postalCode").asText());
-		obj.setStreet(node.get("street").asText());
-		obj.setPoiId(node.get("poiId").asLong());
+		JSONObject node = new JSONObject(json);
+		obj.setInternalRequestId(node.getLong("internalRequestId"));
+		obj.setInternalRequestToVendorId(node.getLong("internalRequestToVendorId"));
+		obj.setInternalAdId(node.getLong("internalAdId"));
+		obj.setVendorCode(node.getString("vendorCode"));
+		obj.setVendorAdId(node.getLong("vendorAdId"));
+		obj.setBuisenessName(node.getString("businessName"));
+		obj.setLat(node.getDouble("lat"));
+		obj.setLat(node.getDouble("lon"));
+		obj.setCity(node.getString("city"));
+		obj.setCountry(node.getString("country"));
+		obj.setPostalCode(node.getString("postalCode"));
+		obj.setStreet(node.getString("street"));
+		obj.setPoiId(node.getLong("poiId"));
 		obj.setFailed(0);
 		} catch (Exception e) {
 			return null;

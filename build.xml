@@ -1,67 +1,142 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="create_run_jar" name="Create Runnable Jar for Project serde with Jar-in-Jar Loader">
-    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
-    <!--ANT 1.7 is required                                        -->
-    <target name="create_run_jar">
-        <jar destfile="/Users/snikhil/main/source/playground/serialize/target/job.jar">
-            <manifest>
-                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
-                <attribute name="Rsrc-Main-Class" value="com.telenav.serialize.json.AdLogJsonMapReduce"/>
-                <attribute name="Class-Path" value="."/>
-                <attribute name="Rsrc-Class-Path" value="./ junit.jar org.hamcrest.core_1.1.0.v20090501071000.jar protobuf-java-2.2.0.jar avro-1.6.2.jar paranamer-2.3.jar snappy-java-1.0.4.1.jar slf4j-api-1.6.4.jar avro-mapred-1.6.2.jar avro-ipc-1.6.2.jar netty-3.2.7.Final.jar velocity-1.7.jar servlet-api-2.5-20081211.jar log4j-1.2.16.jar json-20090211.jar jackson-core-asl-1.9.4.jar hadoop-core-1.0.0.jar commons-cli-1.2.jar xmlenc-0.52.jar commons-httpclient-3.0.1.jar commons-logging-1.0.3.jar commons-codec-1.4.jar commons-math-2.1.jar commons-configuration-1.6.jar commons-collections-3.2.1.jar commons-lang-2.4.jar commons-digester-1.8.jar commons-beanutils-1.7.0.jar commons-beanutils-core-1.8.0.jar commons-net-1.4.1.jar jetty-6.1.26.jar jetty-util-6.1.26.jar jasper-runtime-5.5.12.jar jasper-compiler-5.5.12.jar jsp-api-2.1-6.1.14.jar servlet-api-2.5-6.1.14.jar jsp-2.1-6.1.14.jar ant-1.6.5.jar commons-el-1.0.jar jets3t-0.7.1.jar kfs-0.3.jar hsqldb-1.8.0.10.jar oro-2.0.8.jar core-3.1.1.jar hadoop-test-1.0.0.jar ftplet-api-1.0.0.jar mina-core-2.0.0-M5.jar ftpserver-core-1.0.0.jar ftpserver-deprecated-1.0.0-M2.jar jackson-mapper-asl-1.9.4.jar lombok-0.10.8.jar"/>
-            </manifest>
-            <zipfileset src="jar-in-jar-loader.zip"/>
-            <fileset dir="/Users/snikhil/main/source/playground/serialize/target/classes"/>
-            <zipfileset dir="/Applications/eclipse/plugins/org.junit_4.8.2.v4_8_2_v20110321-1705" includes="junit.jar"/>
-            <zipfileset dir="/Applications/eclipse/plugins" includes="org.hamcrest.core_1.1.0.v20090501071000.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/com/google/protobuf/protobuf-java/2.2.0" includes="protobuf-java-2.2.0.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/org/apache/avro/avro/1.6.2" includes="avro-1.6.2.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/com/thoughtworks/paranamer/paranamer/2.3" includes="paranamer-2.3.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/org/xerial/snappy/snappy-java/1.0.4.1" includes="snappy-java-1.0.4.1.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/org/slf4j/slf4j-api/1.6.4" includes="slf4j-api-1.6.4.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/org/apache/avro/avro-mapred/1.6.2" includes="avro-mapred-1.6.2.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/org/apache/avro/avro-ipc/1.6.2" includes="avro-ipc-1.6.2.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/org/jboss/netty/netty/3.2.7.Final" includes="netty-3.2.7.Final.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/org/apache/velocity/velocity/1.7" includes="velocity-1.7.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/org/mortbay/jetty/servlet-api/2.5-20081211" includes="servlet-api-2.5-20081211.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/log4j/log4j/1.2.16" includes="log4j-1.2.16.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/org/json/json/20090211" includes="json-20090211.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/org/codehaus/jackson/jackson-core-asl/1.9.4" includes="jackson-core-asl-1.9.4.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/org/apache/hadoop/hadoop-core/1.0.0" includes="hadoop-core-1.0.0.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/commons-cli/commons-cli/1.2" includes="commons-cli-1.2.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/xmlenc/xmlenc/0.52" includes="xmlenc-0.52.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/commons-httpclient/commons-httpclient/3.0.1" includes="commons-httpclient-3.0.1.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/commons-logging/commons-logging/1.0.3" includes="commons-logging-1.0.3.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/commons-codec/commons-codec/1.4" includes="commons-codec-1.4.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/org/apache/commons/commons-math/2.1" includes="commons-math-2.1.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/commons-configuration/commons-configuration/1.6" includes="commons-configuration-1.6.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/commons-collections/commons-collections/3.2.1" includes="commons-collections-3.2.1.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/commons-lang/commons-lang/2.4" includes="commons-lang-2.4.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/commons-digester/commons-digester/1.8" includes="commons-digester-1.8.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/commons-beanutils/commons-beanutils/1.7.0" includes="commons-beanutils-1.7.0.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/commons-beanutils/commons-beanutils-core/1.8.0" includes="commons-beanutils-core-1.8.0.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/commons-net/commons-net/1.4.1" includes="commons-net-1.4.1.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/org/mortbay/jetty/jetty/6.1.26" includes="jetty-6.1.26.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/org/mortbay/jetty/jetty-util/6.1.26" includes="jetty-util-6.1.26.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/tomcat/jasper-runtime/5.5.12" includes="jasper-runtime-5.5.12.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/tomcat/jasper-compiler/5.5.12" includes="jasper-compiler-5.5.12.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/org/mortbay/jetty/jsp-api-2.1/6.1.14" includes="jsp-api-2.1-6.1.14.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/org/mortbay/jetty/servlet-api-2.5/6.1.14" includes="servlet-api-2.5-6.1.14.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/org/mortbay/jetty/jsp-2.1/6.1.14" includes="jsp-2.1-6.1.14.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/ant/ant/1.6.5" includes="ant-1.6.5.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/commons-el/commons-el/1.0" includes="commons-el-1.0.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/net/java/dev/jets3t/jets3t/0.7.1" includes="jets3t-0.7.1.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/net/sf/kosmosfs/kfs/0.3" includes="kfs-0.3.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/hsqldb/hsqldb/1.8.0.10" includes="hsqldb-1.8.0.10.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/oro/oro/2.0.8" includes="oro-2.0.8.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/org/eclipse/jdt/core/3.1.1" includes="core-3.1.1.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/org/apache/hadoop/hadoop-test/1.0.0" includes="hadoop-test-1.0.0.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/org/apache/ftpserver/ftplet-api/1.0.0" includes="ftplet-api-1.0.0.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/org/apache/mina/mina-core/2.0.0-M5" includes="mina-core-2.0.0-M5.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/org/apache/ftpserver/ftpserver-core/1.0.0" includes="ftpserver-core-1.0.0.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/org/apache/ftpserver/ftpserver-deprecated/1.0.0-M2" includes="ftpserver-deprecated-1.0.0-M2.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/org/codehaus/jackson/jackson-mapper-asl/1.9.4" includes="jackson-mapper-asl-1.9.4.jar"/>
-            <zipfileset dir="/Users/snikhil/.m2/repository/org/projectlombok/lombok/0.10.8" includes="lombok-0.10.8.jar"/>
-        </jar>
-    </target>
+<project name="tn-traffic-kernel" default="compile" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
+
+	<property file="build.properties" />
+	<property file="${user.home}/build.properties" />
+
+	<property name="artifact.name"    value = "tn-traffic-kernel" />
+	<property name="artifact.version" value = "0.1-dev" />
+	
+	<property name="src.home"         value = "${basedir}/src" />
+	<property name="src.main"         value = "${src.home}/main/java" />
+	<property name="src.test"         value = "${src.home}/test/java" />
+	<property name="build.home"       value = "${basedir}/build" />
+	<property name="build.main"       value = "${build.home}/main" />
+	<property name="build.test"       value = "${build.home}/test" />
+	<property name="dist.home"        value = "${basedir}/dist" />
+	<property name="docs.home"        value = "${dist.home}/docs" />
+	<property name="test.home"        value = "${basedir}/test" />
+
+	<!-- =================================================================== -->
+	<!-- Construct the classpaths.                                      	 -->
+	<!-- =================================================================== -->
+	<path id="main.classpath">
+		<fileset dir="${basedir}/lib">
+			<include name="**/*.jar" />
+		</fileset>
+		<pathelement path="${build.main}" />
+	</path>
+	<path id="test.classpath">
+		<fileset dir="${basedir}/lib">
+			<include name="**/*.jar" />
+		</fileset>
+		<pathelement path="${build.main}" />
+		<pathelement path="${build.test}" />
+	</path>
+
+	<!-- =================================================================== -->
+	<!-- Delete all previously generated artifacts.                        	 -->
+	<!-- =================================================================== -->
+	<target name="clean" description="Delete old build and dist directories">
+		<delete dir="${build.home}" />
+		<delete dir="${dist.home}" />
+		<delete dir="${test.home}" />
+	</target>
+
+	<!-- =================================================================== -->
+	<!-- Prepares the directories                                       	 -->
+	<!-- =================================================================== -->
+	<target name="prepare">
+		<mkdir dir="${build.home}" />
+		<mkdir dir="${build.main}" />
+		<mkdir dir="${build.test}" />
+		<mkdir dir="${dist.home}" />
+		<mkdir dir="${docs.home}" />
+		<mkdir dir="${test.home}" />
+	</target>
+
+	<!-- =================================================================== -->
+	<!-- Use Ivy to resolve dependencies.                                	 -->
+	<!-- =================================================================== -->
+	<target name="resolve" description="Retrieve dependencies via Ivy">
+		<ivy:retrieve />
+	</target>
+
+	<!-- =================================================================== -->
+	<!-- Compile main and test Java code.                                	 -->
+	<!-- =================================================================== -->
+	<target name="compile" depends="prepare, resolve" description="Compile main and test Java sources">
+		<!-- Compile the main Java code -->
+		<javac srcdir="${src.main}"
+			   destdir="${build.main}"
+			   debug="true"
+			   deprecation="false"
+			   optimize="true"
+			   includeantruntime="false">
+			<classpath refid="main.classpath" />
+		</javac>
+
+		<!-- Copy main resources -->
+		<copy  todir="${build.main}">
+		    <fileset dir="${src.main}" excludes="**/*.java"/>
+		</copy>
+
+		<!-- Compile the test Java code -->
+		<javac srcdir="${src.test}" destdir="${build.test}"
+			   debug="true"
+			   deprecation="false"
+			   optimize="true"
+			   includeantruntime="false">
+			<classpath refid="main.classpath" />
+		</javac>
+
+		<!-- Copy test resources -->
+		<copy  todir="${build.test}">
+		    <fileset dir="${src.test}" excludes="**/*.java"/>
+		</copy>
+
+	</target>
+
+	<!-- =================================================================== -->
+	<!-- Create the Javadocs                                            	 -->
+	<!-- =================================================================== -->
+	<target name="javadoc" depends="compile" description="Create Javadoc API documentation">
+		<javadoc sourcepath="${src.main}" destdir="${docs.home}" packagenames="*">
+			<classpath refid="main.classpath" />
+		</javadoc>
+	</target>
+
+	<!-- =================================================================== -->
+	<!-- Run the JUnit tests.                                            	 -->
+	<!-- =================================================================== -->
+	<target name="test" depends="compile" description="Run the junit unit tests">
+		<junit printsummary="yes" haltonfailure="yes">
+			<formatter type="plain" />
+			<classpath refid="test.classpath" />
+			<batchtest fork="yes" todir="${test.home}">
+				<fileset dir="${src.test}">
+					<include name="**/*Test*.java" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+
+	<!-- =================================================================== -->
+	<!-- Create the distribution artifacts.                                	 -->
+	<!-- =================================================================== -->
+	<target name="all" depends="compile,test,javadoc" description="Create binary distribution">
+		<!-- Create application JAR file -->
+		<jar jarfile="${dist.home}/${artifact.name}-${artifact.version}.jar"
+			 basedir="${build.main}" />
+
+		<!-- Create source JAR file -->
+		<jar jarfile="${dist.home}/${artifact.name}-${artifact.version}-source.jar"
+			 basedir="${src.main}" />
+
+		<!-- Copy over the ivy file for the dependency listing -->
+		<copy todir="${dist.home}">
+		  <fileset file="${basedir}/ivy.xml"/>
+		  <mapper type="regexp" from="ivy.xml" to="ivy-${artifact.version}.xml"/>
+		</copy>
+	</target>
+	
 </project>

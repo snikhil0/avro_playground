@@ -1,0 +1,24 @@
+<ivysettings>
+ <settings defaultResolver="default"/>
+ <resolvers>
+  <chain name="public">
+   <ibiblio name="ibiblio" m2compatible="true"/>
+   <!--   
+   <filesystem name="local-maven2" m2compatible="true">
+    <ivy pattern="${user.home}/.m2/repository/[organisation]/[module]/[revision]/[module]-[revision](-[classifier]).pom"/>
+    <artifact pattern="${user.home}/.m2/repository/[organisation]/[module]/[revision]/[module]-[revision](-[classifier]).[ext]"/>
+   </filesystem>
+   -->
+   <url name="telenav" m2compatible="false">
+    <artifact pattern="http://tar1.telenav.com:8080/repository/[organisation]/[module]/[revision]/[artifact]-JDK1.5-[revision].[ext]"/>
+    <artifact pattern="http://tar1.telenav.com:8080/repository/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]"/>
+    <artifact pattern="http://tar1.telenav.com:8080/repository/[organisation]/[module]/[revision]/[artifact]-[revision]-release.[ext]"/>
+   </url>
+  </chain>
+ </resolvers>
+
+ <include url="${ivy.default.settings.dir}/ivysettings-shared.xml"/>
+ <include url="${ivy.default.settings.dir}/ivysettings-local.xml"/>
+ <include url="${ivy.default.settings.dir}/ivysettings-main-chain.xml"/>
+ <include url="${ivy.default.settings.dir}/ivysettings-default-chain.xml"/>
+</ivysettings>

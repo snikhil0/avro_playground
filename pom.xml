@@ -1,117 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.telenav.serialize</groupId>
-  <artifactId>serialize</artifactId>
-  <packaging>jar</packaging>
-  <version>1.0-snapshot</version>
-  <name>serialize</name>
-  <url>http://maven.apache.org</url>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-        <groupId>com.google.protobuf</groupId>
-        <artifactId>protobuf-java</artifactId>
-        <version>2.2.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.avro</groupId>
-      <artifactId>avro</artifactId>
-      <version>1.6.2</version>
-    </dependency>
-    <dependency>
-	<groupId>org.apache.avro</groupId>
-	<artifactId>avro-mapred</artifactId>
-	<version>1.6.2</version>
-	</dependency>
-	<dependency>
-	<groupId>log4j</groupId>
-	<artifactId>log4j</artifactId>
-	<version>1.2.16</version>
-</dependency>
-<dependency>
-	<groupId>org.json</groupId>
-	<artifactId>json</artifactId>
-	<version>20090211</version>
-</dependency>
-    <dependency>
-	<groupId>org.codehaus.jackson</groupId>
-	<artifactId>jackson-core-asl</artifactId>
-	<version>1.9.4</version>
-</dependency>
-<dependency>
-      <groupId>org.apache.hadoop</groupId>
-      <artifactId>hadoop-core</artifactId>
-      <version>1.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.hadoop</groupId>
-      <artifactId>hadoop-test</artifactId>
-      <version>1.0.0</version>
-    </dependency>
-            <dependency>
-	<groupId>org.codehaus.jackson</groupId>
-	<artifactId>jackson-mapper-asl</artifactId>
-	<version>1.9.4</version>
-</dependency>
-<dependency>
-		<groupId>org.projectlombok</groupId>
-		<artifactId>lombok</artifactId>
-		<version>0.10.8</version>
-		<scope>provided</scope>
-	</dependency>
-</dependencies>
-<repositories>
-    <repository>
-      <id>maven</id>
-      <name>Maven 2 repo</name>
-      <url>http://repo1.maven.org/maven2/</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-    <repository>
-		<id>codehaus</id>
-		<url>http://repository.codehaus.org/org/codehaus</url>
-	</repository>
-    <repository>
-      <id>scala</id>
-      <name>Scala tools</name>
-      <url>http://scala-tools.org/repo-releases</url>
-    </repository>
-    <repository>
-      <id>repository.jboss.org</id>
-      <url>http://repository.jboss.org/nexus/content/groups/public/</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-    <repository>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <id>apache snapshots</id>
-      <name>www.apache.org</name>
-      <url>https://repository.apache.org/content/repositories/snapshots</url>
-    </repository>
-    <repository>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <id>apache releases</id>
-      <name>www.apache.org</name>
-      <url>https://repository.apache.org/content/repositories/releases</url>
-    </repository>
-</repositories>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.telenav.serialize</groupId>
+	<packaging>jar</packaging>
+	<version>1.0-snapshot</version>
+	<artifactId>serialize</artifactId>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.protobuf</groupId>
+			<artifactId>protobuf-java</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>1.5.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.5.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.avro</groupId>
+			<artifactId>avro</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.avro</groupId>
+			<artifactId>avro-mapred</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20090211</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>hadoop-core</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>hadoop-test</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>0.10.8</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.twitter.elephantbird</groupId>
+			<artifactId>elephant-bird</artifactId>
+			<version>2.1.9</version>
+		</dependency>
+		<dependency>
+			<groupId>com.hadoop.compression</groupId>
+			<artifactId>hadoop-gpl-compression</artifactId>
+			<version>0.1.0</version>
+		</dependency>
+	</dependencies>
+	<repositories>
+		<repository>
+			<id>maven</id>
+			<name>Maven 2 repo</name>
+			<url>http://repo1.maven.org/maven2/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>codehaus</id>
+			<url>http://repository.codehaus.org/org/codehaus</url>
+		</repository>
+		<repository>
+			<id>scala</id>
+			<name>Scala tools</name>
+			<url>http://scala-tools.org/repo-releases</url>
+		</repository>
+		<repository>
+			<id>repository.jboss.org</id>
+			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>releases</id>
+			<name>Releases</name>
+			<url>https://oss.sonatype.org/content/repositories/releases</url>
+		</repository>
+		<repository>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<id>apache snapshots</id>
+			<name>www.apache.org</name>
+			<url>https://repository.apache.org/content/repositories/snapshots</url>
+		</repository>
+		<repository>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<id>apache releases</id>
+			<name>www.apache.org</name>
+			<url>https://repository.apache.org/content/repositories/releases</url>
+		</repository>
+	</repositories>
 </project>
